@@ -1,0 +1,166 @@
+
+body{
+    font-family: "Lexend Deca", sans-serif;
+    background-size: cover; 
+    background-repeat: no-repeat;
+
+
+}
+.nav-link {
+    font-family: "Lexend Deca", sans-serif;
+}
+.nav-item a{
+    color: white !important; 
+    font-size: 22px; 
+    font-weight: 300;
+}
+.category-item {
+    margin: 10px;
+    flex: 0 0 auto;
+}
+
+.category-item img {
+    display: block;
+    margin: 0 auto;
+}
+
+.about{
+    font-optical-sizing: auto;
+    font-weight: normal;
+}
+
+#design-image {
+    /* width: 100%;
+    max-width: 100%;
+    height: auto; */
+    display: block;
+    margin: 0 auto;
+}
+#card {
+    display: flex;
+    justify-content: space-evenly;
+    /* align-items: center; */
+    margin-top: 3rem;
+}
+
+
+#gift-stone {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 3rem;
+}
+.viewbtn {
+    border-radius: 8px;
+    width: 70px;
+    border: 1px solid #581E1E;
+}
+
+.viewbtn:hover {
+    background-color: #E4DBD4;
+}
+#card {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 3rem;
+}
+#card .card-body {
+    border: 1px solid #5b2323;
+    padding: 10px;
+    text-align: center;
+    border-radius: 10px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+#card .card-body:hover {
+    background-color: #FFE081;
+}
+
+.conSubmit {
+    background-color: #5b2323;
+    border: none;
+    color: white;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.conSubmit:hover {
+    background-color: transparent;
+    color: black;
+    border: 1px solid #5b2323;
+    font-weight: bold;
+    transition: background-color 0.3s ease-in-out;
+
+}
+.carousel-item img{
+    width: 100%; 
+    height: 550px;
+}
+@media (min-width: 1024px) {
+.collapse.navbar-collapse {
+    padding-left:100px;
+    
+}
+}
+
+@media (max-width: 768px) {
+
+    .carousel-item img{
+        width: 100%; 
+        height: 350px;
+    }
+    .container-fluid {
+        padding-left: 15px !important;
+    }
+
+    /* .navbar-toggler {
+       
+    } */
+
+    .navbar-toggler {
+        position: relative;
+        width: 30px;
+        height: 20px;
+        padding: 0;
+        margin-right: 15px !important;
+    }
+
+    .collapse.navbar-collapse {
+        padding-left: 15px !important;
+        padding-top:30px;
+        
+    }
+
+    .input-group.mb-3 {
+        width: auto !important;
+        margin-left: 0 !important;
+    }
+    #design-image {
+        max-width: 38%;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    .map-container {
+        margin-bottom: 20px;
+        /* Add spacing between map and form */
+    }
+}
+@media (max-width: 915px) {
+    #fonco {
+        font-size: 16px !important;
+    }
+
+    .op {
+        width: 32px !important;
+        margin-top: 15px !important;
+    }
+
+
+
+}
+footer {
+    background-color: black;
+    color: white;
+    overflow-x: hidden;
+}

@@ -259,19 +259,73 @@
 </script>
 
 
-<footer style=" background-image: url('{{ asset('/images/new/Parekh Footer img.png') }}');  
+
+<style>
+    .mob_follow-title {
+        color: white;
+    }
+
+
+
+    @media only screen and (max-width: 767px) {
+
+        .bg-imgseting {
+            background-position: 26% center !important;
+        }
+
+        .mob_follow-title {
+            color: wheat !important;
+            /* border: 2px solid wheat; */
+        }
+
+        .social-icons .icon {
+            border: 2px solid wheat !important;
+        }
+
+        .mob_none {
+            display: none;
+        }
+
+        .mob_only_img {
+            display: block !important;
+        }
+
+    }
+
+    .mob_only_img {
+        display: none;
+    }
+
+    @media (max-width: 767px) {
+        .bg-imgseting {
+            background-image: url('/images/new/Frame 3.png') !important;
+            background-position: center center;
+        }
+
+        .mob_menu_center {
+            text-align: center;
+        }
+    }
+</style>
+
+
+
+<footer class="bg-imgseting" style=" background-image: url('{{ asset('/images/new/Parekh Footer img.png') }}');  
     background-size: cover;  
     background-repeat: no-repeat;  
   background-position: 35% center;  
-    width: 100%;  ">
+   width: 100%; ">
 
     <br>
     <br>
     <br>
 
     <div class="row p-4">
-        <div class="col-md-3 ">
+
+        <div class="col-md-3 col-lg-3">
+
             <center>
+
                 <img src="{{asset('images/'.$home_setting->logo) }}" style="width: 40vh;" class="img-fluid" alt="Footer Image">
                 <br>
                 <br>
@@ -280,25 +334,28 @@
                 <br>
                 <br>
                 <br>
-                <div class="social-wrapper text-center mt-5">
-                    <h3 class="follow-title" style="color: #3B0000; font-family: 'Aladin', system-ui; letter-spacing: 3px; font-weight: bold;">Follow Us</h3>
-                    <div class="social-icons">
-                        <a href="{{ $detail->fb_link }}" target="_blank" class="icon fb">
+                <br>
+                <div class="social-wrapper text-center mt-5 ">
+                    <h3 class="follow-title mob_follow-title" style="color: #3B0000; font-family: 'Aladin', system-ui; letter-spacing: 3px; font-weight: bold;">Follow Us</h3>
+                    <div class="social-icons ">
+                        <a href="{{ $detail->fb_link }}" target="_blank" style="text-decoration: none;" class="icon fb mob_follow-title">
                             <i class="fab fa-facebook-f"></i>
                         </a>
-                        <a href="{{ $detail->insta_link }}" target="_blank" class="icon insta">
+                        <a href="{{ $detail->insta_link }}" target="_blank" style="text-decoration: none;" class="icon insta mob_follow-title">
                             <i class="fab fa-instagram"></i>
                         </a>
-                        <a href="{{ $detail->whatsapp_link }}" target="_blank" class="icon whatsapp">
+                        <a href="{{ $detail->whatsapp_link }}" target="_blank" style="text-decoration: none;" class="icon whatsapp mob_follow-title">
                             <i class="fab fa-whatsapp"></i>
                         </a>
 
-                        <a href="tel:{{ $detail->phone }}" class="icon phone">
+                        <a href="tel:{{ $detail->phone }}" style="text-decoration: none;" class="icon phone mob_follow-title">
                             <i class="fas fa-phone"></i>
                         </a>
                     </div>
                 </div>
+
             </center>
+
         </div>
 
         <style>
@@ -397,52 +454,58 @@
             }
         </style>
 
-
-        <div class="col-md-6 clickable-div" onclick="window.location.href='https://maps.app.goo.gl/FQRDg4Njn6XDi6Km8', '_blank'" style="  cursor:pointer;" ></div>
-
+        <div class="col-md-6  clickable-div mob_none" onclick="window.open('https://maps.app.goo.gl/FQRDg4Njn6XDi6Km8', '_blank')" style="  cursor:pointer;"></div>
 
 
-        <div class="col-lg-3">
+        <div class="col-lg-3 col-lg-3">
             <!-- <h2 style="color: #FFE494; font-family: 'Aladin', system-ui; letter-spacing: 3px;">Map</h2>
             <br> -->
 
+
+
             <br>
             <br>
             <br>
             <br>
+
             <br>
+            <img src="{{ asset('images/new/Parekh Jewellers Website Map.png')}}" onclick="window.open('https://maps.app.goo.gl/FQRDg4Njn6XDi6Km8', '_blank')" class="mob_only_img" style="width: 100%;" alt="Jewellery Background">
             <br>
             <br>
 
             <div class="row">
 
-                <div class="col-lg-4 clickable-div" onclick="window.location.href='https://maps.app.goo.gl/FQRDg4Njn6XDi6Km8', '_blank'" style=" height:200px; cursor:pointer;">
+                <div class="col-lg-4 clickable-div mob_none" onclick="window.open('https://maps.app.goo.gl/FQRDg4Njn6XDi6Km8', '_blank')" style=" height:200px; cursor:pointer;">
                 </div>
 
 
-                <div class="col-lg-8">
-                    <!-- <center> -->
-                    <h2 class="follow-title" style="color: #3B0000; font-family: 'Aladin', system-ui; letter-spacing: 3px; font-weight: bold;">Useful Links</h2>
-                    <!-- </center> -->
+                <div class="col-lg-8 mob_menu_center">
+                    <center>
+                        <h2 class="follow-title" style="color: #3B0000; font-family: 'Aladin', system-ui; letter-spacing: 3px; font-weight: bold; text-align: center;">Useful Links</h2>
+                    </center>
                     <br>
 
-                    <ul class="menu-list">
-                        <li><a class="fw-semibold " style="color: #3B0000; font-weight: 700;" href="{{ route('frontend.about_us') }}">Our Story</a></li>
-                        <br>
-                        <li><a class="fw-semibold " style="color: #3B0000; font-weight: 700;" href="{{ route('frontend.product') }}">Collections</a></li>
-                        <br>
+                    <center>
+                        <ul class="menu-list">
+                            <li><a class="fw-semibold " style="color: #3B0000; font-weight: 700;" href="{{ route('index') }}">Home</a></li>
+                            <br>
+                            <li><a class="fw-semibold " style="color: #3B0000; font-weight: 700;" href="{{ route('frontend.about_us') }}">Our Story</a></li>
+                            <br>
+                            <li><a class="fw-semibold " style="color: #3B0000; font-weight: 700;" href="{{ route('frontend.product') }}">Collections</a></li>
+                            <br>
 
-                        <li><a class="fw-semibold " style="color: #3B0000; font-weight: 700;" href="{{ route('frontend.update') }}">Latest News</a></li>
-                        <br>
+                            <li><a class="fw-semibold " style="color: #3B0000; font-weight: 700;" href="{{ route('frontend.update') }}">Latest News</a></li>
+                            <br>
 
-                        <li><a class="fw-semibold " style="color: #3B0000; font-weight: 700;" href="{{ route('frontend.blog') }}">Journal</a></li>
-                        <br>
+                            <li><a class="fw-semibold " style="color: #3B0000; font-weight: 700;" href="{{ route('frontend.blog') }}">Journal</a></li>
+                            <br>
 
-                        <li><a class="fw-semibold " style="color: #3B0000; font-weight: 700;" href="{{ route('frontend.getTouch') }}">Social Sparkle</a></li>
-                        <br>
+                            <li><a class="fw-semibold " style="color: #3B0000; font-weight: 700;" href="{{ route('frontend.getTouch') }}">Social Sparkle</a></li>
+                            <br>
 
-                        <li><a class="fw-semibold " style="color: #3B0000; font-weight: 700;" href="{{ route('frontend.contact_us') }}">Get In Touch</a></li>
-                    </ul>
+                            <li><a class="fw-semibold " style="color: #3B0000; font-weight: 700;" href="{{ route('frontend.contact_us') }}">Get In Touch</a></li>
+                        </ul>
+                    </center>
 
                 </div>
 
@@ -453,7 +516,9 @@
                 width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"
                 referrerpolicy="no-referrer-when-downgrade"></iframe> -->
         </div>
+
     </div>
+
     <!-- </div> -->
 
     <!-- </center> -->
@@ -466,8 +531,10 @@
     <hr style="border: 1px solid  #3B0000;">
 
     <center>
-        <p style="margin-bottom: -10px;  color: #3B0000; font-weight: bold;">Copyright © {{ \Carbon\Carbon::now()->year }} Parekh Pravinchandra Hiralal & Co.
-            Designed by <a style="color:#3B0000;" href="https://www.apexsoftwarehouse.com">Apex Software House</a></p>
+        <div class="container">
+            <p style="margin-bottom: -10px;  color: #3B0000; font-weight: bold;">Copyright © {{ \Carbon\Carbon::now()->year }} Parekh Pravinchandra Hiralal & Co.
+                Designed by <a style="color:#3B0000; font-weight: bold;" href="https://www.apexsoftwarehouse.com">Apex Software House</a></p>
+        </div>
     </center>
 
     <br>
@@ -480,11 +547,19 @@
     .menu-list {
         list-style-type: disc;
         padding-left: 20px;
+        /* keep this if you want bullets indented */
+        /* list-style: none; */
+        text-align: left;
+        /* change from center to left for text alignment */
+        display: inline-block;
+        /* make the ul shrink to its content width */
+        margin: 0 auto;
+        /* center the ul horizontally in its container */
     }
 
     .menu-list li::marker {
         color: #3B0000;
-        /* Change this to your desired bullet color */
+        /* bullet color */
     }
 
     .menu-list>li>a {
@@ -494,8 +569,8 @@
 
 
 <!-- WhatsApp Button -->
-<a href="https://api.whatsapp.com/send?phone=9824882345" class="whatsapp-float" target="_blank">
-    <i class="fab fa-whatsapp" aria-hidden="true"></i>
+<a href="https://api.whatsapp.com/send?phone=9824882345" style="text-decoration: none;" class="whatsapp-float" target="_blank" aria-label="Chat on WhatsApp">
+    <i class="fab fa-whatsapp"></i>
 </a>
 
 <style>
@@ -504,16 +579,35 @@
         position: fixed;
         bottom: 20px;
         right: 20px;
-        background-color: #25d366;
-        color: white;
-        padding: 15px 18px;
+        background-color: #ffffff;
+        /* White background */
+        color: #25d366 !important;
+        /* WhatsApp green icon */
+        padding: 15px;
         border-radius: 50%;
-        font-size: 24px;
+        font-size: 26px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        /* subtle shadow for professionalism */
+        display: flex;
+        align-items: center;
+        justify-content: center;
         z-index: 999;
-        transition: background 0.3s ease;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
     .whatsapp-float:hover {
-        background-color: #128C7E;
+        transform: scale(1.1);
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Optional: adjust icon inside */
+    .whatsapp-float i {
+        font-weight: bold;
+    }
+
+    @media (max-width: 768px) {
+        .whatsapp-float {
+            bottom: 75px;
+        }
     }
 </style>

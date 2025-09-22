@@ -366,11 +366,15 @@
 <section class="contact-hero" style="background-image: url('images/new/section_bg_img.jpg'); background-size: cover; background-position: center;">
     <div class="container">
         <div class="hero-content text-center">
-            <h1 class="hero-title">Connect With Us</h1>
-            <p class="hero-subtitle">We'd love to hear from you. Get in touch with our expert team.</p>
+            <h1 class="hero-title">Get In Touch</h1>
+            <!-- <p class="hero-subtitle">We'd love to hear from you. Get in touch with our expert team.</p> -->
         </div>
     </div>
 </section>
+
+<br>
+<br>
+<br>
 
 <!-- Contact Cards Section -->
 <div class="container contact-cards">

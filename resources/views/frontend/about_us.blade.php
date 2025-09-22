@@ -28,7 +28,7 @@
     }
 
     .hero-title {
-        font-family: "Aladin", system-ui;
+        font-family: 'Playfair Display', serif;
         letter-spacing: 4px;
         color: white;
         font-size: 3.5rem;
@@ -61,26 +61,154 @@
     </div>
 </section>
 
+<br>
+<br>
+<br>
+
 
 <div class="container mt-3 about">
 
-    <section class="py-5" style="background: linear-gradient(to right, #f7f1f1, #ffffff);">
+    <section class="about-section py-5">
         <div class="container">
             <div class="row align-items-center">
-                <!-- Left Image -->
-                <div class="col-md-6 mb-4 mb-md-0">
-                    <img src="your-image.jpg" class="img-fluid rounded shadow" alt="About Us">
+
+                <!-- Left Image with Floating Effect -->
+                <div class="col-md-6 mb-4 mb-md-0 position-relative">
+                    <div class="image-wrapper">
+                        <img src="{{ asset('images/new/Parekh 6-6-24.png')}}" class="img-fluid rounded-5 shadow-xl" alt="About Us">
+                        <div class="floating-shape shape-1"></div>
+                        <div class="floating-shape shape-2"></div>
+                    </div>
                 </div>
 
                 <!-- Right Content -->
                 <div class="col-md-6">
-                    <h2 class="fw-bold mb-3" style="color: #622c2c; font-family: 'Lustria', serif;">Who We Are</h2>
-                    <p class="lead" style="line-height: 1.8; color: #555;">{!! $detail->about_us !!}</p>
-                    <a href="#more" class="btn btn-lg px-4" style="background: #622c2c; color: #fff; border-radius: 30px;">Learn More</a>
+                    <h2 class="fw-bold mb-3 title-text">Who We Are</h2>
+                    <p class="lead content-text">{!! $detail->about_us !!}</p>
                 </div>
+
             </div>
         </div>
     </section>
+
+    <!-- Custom CSS -->
+    <style>
+        .about-section {
+            background: linear-gradient(135deg, #fffdfd, #f8f3f3);
+            border-radius: 30px;
+            padding: 57px 18px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+        }
+
+        /* Decorative glassmorphic blobs */
+        .about-section::before,
+        .about-section::after {
+            content: "";
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.5;
+        }
+
+        .about-section::before {
+            top: -100px;
+            left: -100px;
+            width: 280px;
+            height: 280px;
+            background: rgba(98, 44, 44, 0.3);
+        }
+
+        .about-section::after {
+            bottom: -100px;
+            right: -100px;
+            width: 280px;
+            height: 280px;
+            background: rgba(98, 44, 44, 0.2);
+        }
+
+        /* Floating Shapes */
+        .floating-shape {
+            position: absolute;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #622c2c, #9e4f4f);
+            opacity: 0.15;
+            animation: float 6s infinite ease-in-out;
+        }
+
+        .shape-1 {
+            top: -20px;
+            right: -30px;
+            width: 120px;
+            height: 120px;
+        }
+
+        .shape-2 {
+            bottom: -40px;
+            left: -30px;
+            width: 150px;
+            height: 150px;
+            animation-delay: 3s;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        /* Image Hover Effect */
+        .image-wrapper {
+            position: relative;
+            overflow: hidden;
+            border-radius: 25px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .image-wrapper img {
+            transition: transform 0.7s ease;
+        }
+
+        .image-wrapper:hover img {
+            transform: scale(1.12) rotate(2deg);
+        }
+
+        /* Title Styling */
+        .title-text {
+            color: #622c2c;
+            font-family: 'Lustria', serif;
+            font-size: 2.6rem;
+            position: relative;
+            letter-spacing: 1px;
+        }
+
+        .title-text::after {
+            content: "";
+            display: block;
+            width: 80px;
+            height: 5px;
+            background: linear-gradient(to right, #622c2c, #9e4f4f);
+            margin-top: 12px;
+            border-radius: 4px;
+        }
+
+        /* Content Text */
+        .content-text {
+            line-height: 1.9;
+            color: #444;
+            font-size: 1.15rem;
+            margin-bottom: 25px;
+        }
+    </style>
+
+    <!-- --------------------------------------------------------------------- -->
 
 
     <style>
@@ -107,6 +235,8 @@
             });
         });
     </script>
+
+
     <br>
     <br>
     <div class="main-container">

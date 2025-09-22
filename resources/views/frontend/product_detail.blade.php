@@ -518,7 +518,9 @@
 <div class="product-container">
     <div class="container">
         <div class="product-wrapper">
+
             <div class="row g-0">
+
                 <!-- Mobile Carousel -->
                 <div class="col-12 d-md-none">
                     <div id="mobileCarousel" class="carousel slide mobile-carousel" data-bs-ride="carousel">
@@ -558,6 +560,7 @@
                             @endforeach
                             @endif
                         </div>
+
                     </div>
                 </div>
 
@@ -601,7 +604,9 @@
                         </div>
                     </div>
                 </div>
+
             </div>
+
         </div>
     </div>
 </div>
@@ -618,7 +623,9 @@
                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
+
                 <form id="detailsForm" action="{{ route('frontend.inquiry', ['id'=>$product->id]) }}" method="POST">
+
                     @csrf
                     <div class="form-group">
                         <label for="name">
@@ -652,7 +659,9 @@
                         <i class="fas fa-paper-plane me-2"></i>
                         Submit Inquiry
                     </button>
+                    
                 </form>
+
             </div>
         </div>
     </div>
@@ -888,4 +897,5 @@
         background: linear-gradient(45deg, #8b2635, #5a1010);
     }
 </style>
+
 @endpush

@@ -33,7 +33,9 @@
           </div>
           <!-- /.card-header -->
           <div class="card-body">
+
             <table id="example1" class="table table-bordered table-striped">
+
               <thead>
 
                 <tr>
@@ -45,8 +47,9 @@
                   <th>Message</th>
 
                 </tr>
-                
+
               </thead>
+
               <tbody>
 
                 <?php if ($inquiry != "") {
@@ -67,7 +70,9 @@
                 } ?>
 
               </tbody>
+
             </table>
+            
           </div>
         </div>
       </div>

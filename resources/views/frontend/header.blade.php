@@ -29,7 +29,14 @@
 
         <!-- Desktop Navbar Links -->
         <div class="collapse navbar-collapse justify-content-end d-none d-lg-flex" id="navbarNav">
+
             <ul class="navbar-nav align-items-lg-center gap-lg-3 text-center">
+
+                <li class="nav-item">
+                    <a class="nav-link text-uppercase fw-semibold text-gold" href="{{ route('index') }}">Home</a>
+                </li>
+
+
                 <li class="nav-item"><a class="nav-link text-uppercase fw-semibold text-gold" href="{{ route('frontend.about_us') }}">Our Story</a></li>
                 <li class="nav-item"><a class="nav-link text-uppercase fw-semibold text-gold" href="{{ route('frontend.product') }}">Collections</a></li>
                 <li class="nav-item"><a class="nav-link text-uppercase fw-semibold text-gold" href="{{ route('frontend.update') }}">Latest News</a></li>
@@ -58,8 +65,8 @@
 
                 </li>
 
-
             </ul>
+            
         </div>
 
     </div>
@@ -68,12 +75,14 @@
 
 
 
-<div class="offcanvas offcanvas-end" style="background-color: whitesmoke;" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
-    
-    <div class="offcanvas-header" style="background-color: black;">
+<div class="offcanvas offcanvas-end" style="background-color: whitesmoke; z-index: 10500;" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+
+    <div class="offcanvas-header" style="background-color: #3B0000;">
+
         <a class="navbar-brand d-flex " href="{{ route('index') }}" title="PP Jewelers">
             <img src="{{ asset('images/' . $home_setting->logo) }}" alt="Logo" class="img-fluid logo-img">
         </a>
+
         <button
             type="button"
             class="btn "
@@ -81,25 +90,58 @@
             aria-label="Close" style="color: #FFE494;">
             <i class="fas fa-times" style="font-size: 25px;"></i> <!-- Font Awesome icon -->
         </button>
+
     </div>
 
-    <div class="offcanvas-body">
+    <div class="offcanvas-body" style="background-image: url('images/new/Footer Repeat Grid.svg'); background-size: cover; background-position: center;">
 
 
         <ul class="navbar-nav align-items-lg-center gap-lg-3 text-center">
 
-            <li class="nav-item "><a class="nav-link text-left text-uppercase fw-semibold text-gold" href="{{ route('frontend.about_us') }}">Our Story</a></li>
-            <li class="nav-item "><a class="nav-link text-left text-uppercase fw-semibold text-gold" href="{{ route('frontend.product') }}">Collections</a></li>
-            <li class="nav-item "><a class="nav-link text-left text-uppercase fw-semibold text-gold" href="{{ route('frontend.update') }}">Latest News</a></li>
-            <li class="nav-item "><a class="nav-link text-left text-uppercase fw-semibold text-gold" href="{{ route('frontend.blog') }}">Journal</a></li>
-            <li class="nav-item "><a class="nav-link text-left text-uppercase fw-semibold text-gold" href="{{ route('frontend.getTouch') }}">Social Sparkle</a></li>
-            <li class="nav-item "><a class="nav-link text-left text-uppercase fw-semibold text-gold" href="{{ route('frontend.contact_us') }}">Get In Touch</a></li>
+            <li class="nav-item mt-3" style="font-weight: bold; border-bottom: 2px solid #3B0000;"><a class="nav-link text-left text-uppercase fw-semibold text-gold" href="{{ route('index') }}">Home</a></li>
 
+            <li class="nav-item mt-3" style="font-weight: bold; border-bottom: 2px solid #3B0000;"><a class="nav-link text-left text-uppercase fw-semibold text-gold" href="{{ route('frontend.about_us') }}">Our Story</a></li>
 
+            <li class="nav-item mt-3" style="font-weight: bold; border-bottom: 2px solid #3B0000;"><a class="nav-link text-left text-uppercase fw-semibold text-gold" href="{{ route('frontend.product') }}">Collections</a></li>
+
+            <li class="nav-item mt-3" style="font-weight: bold; border-bottom: 2px solid #3B0000;"><a class="nav-link text-left text-uppercase fw-semibold text-gold" href="{{ route('frontend.update') }}">Latest News</a></li>
+
+            <li class="nav-item mt-3" style="font-weight: bold; border-bottom: 2px solid #3B0000;"><a class="nav-link text-left text-uppercase fw-semibold text-gold" href="{{ route('frontend.blog') }}">Journal</a></li>
+
+            <li class="nav-item mt-3" style="font-weight: bold; border-bottom: 2px solid #3B0000;"><a class="nav-link text-left text-uppercase fw-semibold text-gold" href="{{ route('frontend.getTouch') }}">Social Sparkle</a></li>
+
+            <li class="nav-item mt-3" style="font-weight: bold; border-bottom: 2px solid #3B0000;"><a class="nav-link text-left text-uppercase fw-semibold text-gold" href="{{ route('frontend.contact_us') }}">Get In Touch</a></li>
+
+            <div class="social-wrapper text-center mt-5 ">
+
+                <h3 class="follow-title mob_follow-title2" style="color: #3B0000; font-family: 'Aladin', system-ui; letter-spacing: 3px; font-weight: bold;">Follow Us</h3>
+
+                <div class="social-icons ">
+
+                    <a href="{{ $detail->fb_link }}" target="_blank" class="icon fb mob_follow-title2 mob_offcanvas_social-icons2" style=" border: 2px solid #3B0000 !important;">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+
+                    <a href="{{ $detail->insta_link }}" target="_blank" class="icon insta mob_follow-title2 mob_offcanvas_social-icons2" style=" border: 2px solid #3B0000 !important;">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+
+                    <a href="{{ $detail->whatsapp_link }}" target="_blank" class="icon whatsapp mob_follow-title2 mob_offcanvas_social-icons2" style=" border: 2px solid #3B0000 !important;">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+
+                    <a href="tel:{{ $detail->phone }}" class="icon phone mob_follow-title2 mob_offcanvas_social-icons2" style=" border: 2px solid #3B0000 !important;">
+                        <i class="fas fa-phone"></i>
+                    </a>
+
+                </div>
+
+            </div>
 
         </ul>
 
     </div>
+
 </div>
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
@@ -180,7 +222,7 @@
         display: block;
         height: 2px;
         width: 0;
-        background: #FFC258;
+        background: #3B0000;
         transition: width 0.3s ease;
         margin-top: 4px;
         margin-left: auto;
@@ -188,12 +230,15 @@
     }
 
     .nav-link:hover {
-        color: #FFC258 !important;
+        color: #3B0000 !important;
+        font-weight: bold !important;
         transform: translateY(-2px);
     }
 
     .nav-link:hover::after {
         width: 60%;
+        font-weight: bold;
+
     }
 
     .navbar-toggler-icon {
@@ -227,18 +272,33 @@
         bottom: 0;
     }
 
+
+    .offcanvas {
+        max-width: 75% !important;
+    }
+
     /* Optional: Responsive tweaks */
     /* Mobile Responsive Tweaks */
     /* Mobile view: place logo + toggler in same row */
     @media (max-width: 768px) {
         .logo-bg {
-            padding: 0 10px;
+            padding: 0 19px;
         }
 
         .logo-img {
             height: 50px;
             width: auto;
         }
+
+        .mob_follow-title2 {
+            color: #3B0000;
+        }
+
+        .mob_offcanvas_social-icons2 {
+            border: 2px solid #3B0000 !important;
+        }
+
+
     }
 
 
@@ -287,3 +347,151 @@
         }
     });
 </script>
+
+
+<!-- Mobile Search Trigger -->
+<h3 class="rotate-heading d-block d-md-none" data-bs-toggle="modal" data-bs-target="#mobileSearchModal">
+    <i class="fas fa-search mx-2 "></i> Search
+</h3>
+
+<!-- Mobile Search Modal -->
+<div class="modal fade" id="mobileSearchModal" tabindex="-1" aria-hidden="true">
+
+    <div class="modal-dialog modal-dialog-centered mx-3">
+
+        <div class="modal-content rounded-4 shadow-lg border-0 overflow-hidden">
+
+            <!-- Modal Header with Gradient -->
+            <div class="modal-header border-0 text-white"
+                style="background: #3B0000;">
+                <h5 class="modal-title fw-bold">
+                    <i class="fas fa-search me-2"></i> Search Jewellery
+                </h5>
+                <button type="button" class="btn-close btn-close-white shadow-none" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <!-- Modal Body -->
+            <div class="modal-body bg-light">
+                <form action="{{ route('search') }}" method="GET" class="input-group shadow-sm rounded-pill overflow-hidden">
+                    <input type="text"
+                        name="query"
+                        class="form-control border-0"
+                        placeholder="Type your search..."
+                        autofocus>
+                    <button type="submit"
+                        class="btn text-white px-4"
+                        style="background-color: #3B0000;">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </form>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<style>
+    .rotate-heading {
+        /* display: none !important; */
+        position: fixed;
+        left: -98px;
+        top: 50%;
+        transform: rotate(90deg);
+        transform-origin: center center;
+        background-color: #3B0000;
+        color: white;
+        border: 2px solid #3B0000;
+        border-top-left-radius: 30px;
+        border-top-right-radius: 30px;
+
+
+        /* color: white; */
+        padding: 10px 10px;
+        font-size: 18px;
+        z-index: 9999;
+        /* border-radius: 25px; */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: 'Arial', sans-serif;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+    }
+
+    /* Hover effect */
+    .rotate-heading:hover {
+        background-color: #FFBA50;
+        border: 2px solid #3B0000;
+
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        color: white;
+    }
+
+    /* Styling for icon */
+    .rotate-heading .icon {
+        margin-left: 10px;
+        font-size: 20px;
+        transition: transform 0.3s ease-in-out;
+    }
+
+    /* Icon movement on hover */
+    .rotate-heading:hover .icon {
+        transform: translateX(5px);
+    }
+
+    .rotate-heading {
+        display: none;
+        /* Hidden by default */
+    }
+
+    /* Mobile view adjustments */
+    @media (max-width: 767px) {
+        .rotate-heading {
+            display: flex;
+
+            text-align: center;
+            /* Show only on mobile */
+
+
+            position: fixed;
+            left: 0;
+            right: 0;
+            bottom: -10px;
+            top: auto;
+            transform: rotate(0deg);
+
+            background-color: #3B0000;
+            border: 2px solid #3B0000;
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+
+            padding: 7px 15px;
+            font-size: 22px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+
+            justify-content: center;
+            align-items: center;
+            font-family: 'Arial', sans-serif;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+            z-index: 9999;
+        }
+
+        .rotate-heading .icon {
+            font-size: 24px;
+            margin-left: 12px;
+        }
+
+        .rotate-heading:hover {
+            background-color: #FFBA50;
+            border: 2px solid #3B0000;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+            color: white;
+        }
+    }
+</style>

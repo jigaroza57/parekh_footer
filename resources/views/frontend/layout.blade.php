@@ -47,7 +47,7 @@
 
 <!-- <body style="background-color:whitesmoke; background-image: url('public/images/main-content-area@2x.png');"> -->
 
-<body style="background-image: url('images/Background.png'); background-size: cover; background-position: center;">
+<body style="background: whitesmoke;">
 
 
     @include('frontend/header')

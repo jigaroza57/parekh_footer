@@ -400,11 +400,12 @@
         }
     }
 </style>
+
 <!-- Hero Section -->
-<section class="contact-hero" style="background-image: url('images/new/section_bg_img.jpg'); background-size: cover; background-position: center;">
+<section class="contact-hero" style="background-image: url('/images/new/section_bg_img.jpg'); background-size: cover; background-position: center;">
     <div class="container">
         <div class="hero-content text-center">
-            <h1 class="hero-title">Our Products </h1>
+            <h1 class="hero-title">Collections </h1>
 
             <!-- <p class="hero-subtitle" style="color: white;">We'd love to hear from you. Get in touch with our expert team.</p> -->
         </div>
@@ -422,13 +423,63 @@
     </div>
 </section> -->
 
+
+<style>
+    /* Mobile view adjustments */
+    @media (max-width: 768px) {
+        .category-nav {
+            padding: 10px;
+            border-radius: 15px;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+            gap: 10px;
+        }
+
+        .product-nav-item,
+        .nav-item2 {
+            flex: 1 1 calc(50% - 10px);
+            /* 2 items per row */
+            text-align: center;
+        }
+
+        .product-nav-link {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            border: 1px solid rgba(88, 30, 30, 0.1);
+            border-radius: 12px;
+            font-size: 14px;
+        }
+
+        .dropdown-menu {
+            position: static !important;
+            /* Keep dropdown inside flow */
+            box-shadow: none;
+            /* margin-top: -55px !important; */
+            margin-bottom: 33px !important;
+
+            border-radius: 10px;
+            width: 100%;
+        }
+
+        .dropdown-item {
+            font-size: 13px;
+            padding: 10px 15px;
+        }
+    }
+</style>
+
 <!-- Category Navigation -->
+
 <div class="container">
     <br>
     <br>
     <br>
     <br>
+
     <div class="category-nav">
+
         <!-- All Category -->
         <div class="nav-item2">
             <a href="{{ route('frontend.product') }}" class="product-nav-link {{ request()->routeIs('frontend.product') ? 'active' : '' }}">
@@ -436,80 +487,320 @@
             </a>
         </div>
 
-
-
         <!-- Dynamic Category Dropdowns -->
         @foreach($categories as $category)
+
         <div class="product-nav-item dropdown">
-            <span class="product-nav-link dropdown-toggle" id="dropdownMenu{{ $category->id }}"
-                data-bs-toggle="dropdown" aria-expanded="false">
+
+            <a class="product-nav-link dropdown-toggle {{ request()->input('id') == $category->id ? 'active' : '' }}"
+                id="dropdownMenu{{ $category->id }}"
+                data-bs-toggle="dropdown"
+                href="javascript:void(0);"
+                aria-expanded="false">
                 {{ $category->name }}
-            </span>
+            </a>
+            
             <ul class="dropdown-menu" aria-labelledby="dropdownMenu{{ $category->id }}">
-                @if($category->subCatRecursive->isEmpty())
+                <!-- All category link (works properly) -->
+
                 <li>
                     <a class="dropdown-item" href="{{ route('frontend.product_by_category', ['id' => $category->id]) }}">
-                        {{ $category->name }}
+                        All {{ $category->name }}
                     </a>
                 </li>
-                @else
+
+                @if(!$category->subCatRecursive->isEmpty())
+                <li>
+                    <hr class="dropdown-divider">
+                </li>
                 @foreach($category->subCatRecursive as $subCategory)
                 @include('frontend.category_dropdown', ['category' => $subCategory])
                 @endforeach
                 @endif
             </ul>
+
         </div>
+
         @endforeach
 
     </div>
+
 </div>
 
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        document.querySelectorAll('.dropdown-submenu > .dropdown-toggle').forEach(function(el) {
+            el.addEventListener('click', function(e) {
+                // Stop Bootstrap from closing parent dropdown
+                e.preventDefault();
+                e.stopPropagation();
+
+                let submenu = this.nextElementSibling;
+
+                // Toggle submenu
+                submenu.classList.toggle("show");
+                this.parentElement.classList.toggle("show");
+
+                // Close other open submenus inside the same parent
+                let parentMenu = this.closest('.dropdown-menu');
+                parentMenu.querySelectorAll('.dropdown-menu.show').forEach(function(openSub) {
+                    if (openSub !== submenu) {
+                        openSub.classList.remove("show");
+                        openSub.parentElement.classList.remove("show");
+                    }
+                });
+            });
+        });
+    });
+</script>
+
+
+
 <!-- Products Section -->
- 
+
+<!-- Products Section -->
+
 <section class="products-section">
-    <br>
-    <br>
-
     <div class="container">
-        <!-- <h2 class="section-title">Featured Products</h2>
-        <p class="section-subtitle">Explore our handpicked selection of quality products</p> -->
+        <div class="row g-4">
+            @foreach($products as $index => $product)
+            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12" data-aos="zoom-in" data-aos-delay="{{ $index * 100 }}">
+                <a href="{{ route('frontend.product_detail', ['id' => $product->id]) }}" style="text-decoration: none;" class="creative-card-link">
+                    <div class="creative-card">
+                        <!-- Badge -->
+                        @if($product->is_new)
+                        <div class="product-badge">New</div>
+                        @endif
 
-        <div class="row">
-            @foreach($products as $product)
-            <div class="col-lg-3 col-md-6 col-sm-6 mb-4">
-                <div class="product-card">
-                    @if($product->is_new)
-                    <div class="product-badge">New</div>
-                    @endif
-                    <div class="product-image">
-                        <a href="{{ route('frontend.product_detail', ['id' => $product->id]) }}">
-                            <img src="{{ asset('images/product/' . $product->image) }}" alt="{{ $product->name }}">
-                        </a>
-                        <div class="product-overlay">
-                            <!-- <a href="#" class="overlay-btn" title="Add to Wishlist"><i class="fas fa-heart"></i></a> -->
-                            <a href="{{ route('frontend.product_detail', ['id' => $product->id]) }}" class="overlay-btn" title="View Details"><i class="fas fa-eye"></i></a>
+                        <!-- Image Section -->
+                        <div class="image-section">
+                            <div class="image-container">
+                                <img src="{{ asset('images/product/' . $product->image) }}"
+                                    alt="{{ $product->name }}"
+                                    class="product-image"
+                                    loading="lazy">
+                            </div>
+                            <!-- Glow effect -->
+                            <div class="image-glow-effect">
+                                <div class="glow-ring"></div>
+                            </div>
+                        </div>
+
+                        <!-- Content Section -->
+                        <div class="content-section">
+                            <h3 class="product-title" style="color: #3B0000;">{{ $product->name }}</h3>
+                            <p class="product-description">{{ $product->description ?? 'Discover the amazing features of this product.' }}</p>
+                            <div class="explore-btn">
+                                <span class="btn-text">Explore Now</span>
+                                <div class="btn-arrow">
+                                    <i class="bi bi-arrow-right"></i>
+                                    <i class="bi bi-arrow-right"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Hover Effects -->
+                        <div class="hover-effects">
+                            <div class="ripple-effect"></div>
+                            <div class="border-animation">
+                                <div class="border-line top"></div>
+                                <div class="border-line right"></div>
+                                <div class="border-line bottom"></div>
+                                <div class="border-line left"></div>
+                            </div>
                         </div>
                     </div>
-                    <div class="product-content">
-                        <h4 class="product-title">{{ $product->name }}</h4>
-                        <p class="product-description">
-                            {{ $product->description ?? 'Discover the amazing features and quality of this premium product.' }}
-                        </p>
-                        <a href="{{ route('frontend.product_detail', ['id' => $product->id]) }}" class="explore-btn">
-                            Explore More
-                        </a>
-                    </div>
-                </div>
+                </a>
             </div>
             @endforeach
         </div>
-
-
     </div>
 </section>
 
-
 @endsection
+
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const submenus = document.querySelectorAll('.dropdown-submenu');
+
+        submenus.forEach(submenu => {
+            const toggle = submenu.querySelector('.dropdown-toggle');
+
+            toggle.addEventListener('click', function(e) {
+                if (window.innerWidth <= 768) {
+                    e.preventDefault();
+                    e.stopPropagation();
+
+                    // Toggle this submenu
+                    submenu.classList.toggle('show');
+
+                    // Close siblings at same level
+                    const siblings = Array.from(submenu.parentElement.children)
+                        .filter(el => el !== submenu && el.classList.contains('dropdown-submenu'));
+                    siblings.forEach(sib => sib.classList.remove('show'));
+                }
+            });
+        });
+
+        // Optional: close all dropdowns when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.category-nav')) {
+                submenus.forEach(s => s.classList.remove('show'));
+            }
+        });
+    });
+</script>
+
+
+
+<style>
+    .products-section .creative-card {
+        position: relative;
+        overflow: hidden;
+        border-radius: 26px;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(18px);
+        box-shadow: 0 12px 35px rgba(0, 0, 0, 0.25);
+        transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .products-section .creative-card:hover {
+        transform: translateY(-12px) scale(1.03);
+        box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
+    }
+
+    .products-section .image-container {
+        overflow: hidden;
+        position: relative;
+        height: 300px;
+    }
+
+    .products-section .product-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+    }
+
+    .products-section .creative-card:hover .product-image {
+        transform: scale(1.4);
+    }
+
+    .products-section .product-badge {
+        position: absolute;
+        top: 12px;
+        left: 12px;
+        background: #3B0000;
+        color: #fff;
+        padding: 6px 14px;
+        border-radius: 12px;
+        font-weight: bold;
+        animation: pulseBadge 1.8s infinite;
+    }
+
+    @keyframes pulseBadge {
+        0% {
+            transform: scale(1);
+            opacity: 1;
+        }
+
+        50% {
+            transform: scale(1.1);
+            opacity: 0.9;
+        }
+
+        100% {
+            transform: scale(1);
+            opacity: 1;
+        }
+    }
+
+    .products-section .content-section {
+        padding: 20px;
+        text-align: center;
+    }
+
+    .products-section .product-title {
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: #3B0000;
+        margin-bottom: 10px;
+    }
+
+    .products-section .explore-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        padding: 8px 16px;
+        border-radius: 25px;
+        background: #3B0000;
+        color: #fff;
+        font-weight: bold;
+        cursor: pointer;
+        transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .products-section .explore-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 18px rgba(139, 58, 58, 0.35);
+    }
+
+    /* Responsive */
+    @media(max-width: 992px) {
+        .products-section .image-container {
+            height: 300px;
+        }
+    }
+
+    @media(max-width: 768px) {
+        .products-section .image-container {
+            height: 300px;
+        }
+    }
+
+    @media(max-width: 576px) {
+        .products-section .image-container {
+            height: 300px;
+        }
+    }
+</style>
+
+
+<!-- Scripts -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Image zoom effect
+        document.querySelectorAll(".image-container").forEach(container => {
+            const img = container.querySelector(".product-image");
+            container.addEventListener("mousemove", (e) => {
+                const rect = container.getBoundingClientRect();
+                const x = ((e.clientX - rect.left) / rect.width) * 100;
+                const y = ((e.clientY - rect.top) / rect.height) * 100;
+                img.style.transformOrigin = `${x}% ${y}%`;
+            });
+            container.addEventListener("mouseenter", () => {
+                img.style.transform = "scale(1.4)";
+            });
+            container.addEventListener("mouseleave", () => {
+                img.style.transform = "scale(1)";
+                img.style.transformOrigin = "center center";
+            });
+        });
+
+        // Initialize AOS animations
+        AOS.init({
+            duration: 1200,
+            easing: 'ease-out-cubic',
+            once: true,
+            offset: 150
+        });
+    });
+</script>
 
 <style>
     /* Add to your <style> section */
@@ -553,18 +844,18 @@
     }
 
     .overlay-btn {
-        background: linear-gradient(135deg, #FDBE51, #8B3A3A);
+        background: #3B0000;
         color: #fff;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     }
 
     .overlay-btn:hover {
-        background: linear-gradient(135deg, #8B3A3A, #FDBE51);
+        background: #3B0000;
         transform: scale(1.15) rotate(8deg);
     }
 
     .product-badge {
-        background: linear-gradient(135deg, #FDBE51, #8B3A3A);
+        background: #3B0000;
         color: #fff;
         padding: 6px 14px;
         border-radius: 12px;
@@ -597,9 +888,8 @@
     .product-title {
         font-size: 1.2rem;
         font-weight: 700;
-        background: linear-gradient(135deg, #581E1E, #FDBE51);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
+        color: #3B0000;
+
     }
 
     .explore-btn {
@@ -607,7 +897,7 @@
         margin-top: 12px;
         padding: 10px 20px;
         border-radius: 25px;
-        background: linear-gradient(135deg, #FDBE51, #8B3A3A);
+        background: #3B0000;
         color: #fff;
         font-weight: bold;
         text-decoration: none;
@@ -615,7 +905,7 @@
     }
 
     .explore-btn:hover {
-        background: linear-gradient(135deg, #8B3A3A, #FDBE51);
+        background: #3B0000;
         box-shadow: 0 6px 18px rgba(139, 58, 58, 0.35);
         transform: translateY(-3px);
     }
@@ -665,7 +955,89 @@
 </style>
 
 
+<style>
+    /* Multi-level dropdown styles */
+    .dropdown-submenu {
+        position: relative;
+    }
+
+    .dropdown-submenu>.dropdown-menu {
+        top: 0;
+        left: 100%;
+        margin-left: 0.1rem;
+    }
+
+    .dropdown-submenu:hover .dropdown-submenu-menu {
+        display: block;
+    }
+
+    .dropdown-submenu-menu {
+        display: none;
+    }
+
+    /* Responsive submenu */
+    /* Mobile stacked dropdown */
+    @media (max-width: 768px) {
+        .dropdown-submenu {
+            position: relative;
+            width: 100%;
+        }
+
+        .dropdown-submenu>.dropdown-menu {
+            display: none;
+            /* hide by default */
+            padding-left: 15px;
+            /* indent nested items */
+            margin-top: 5px;
+            border-left: 2px solid #581E1E;
+            /* visual hierarchy */
+            border-radius: 0;
+            background: #fff;
+        }
+
+        .dropdown-submenu.show>.dropdown-menu {
+            display: block;
+            /* show on toggle */
+        }
+
+        .dropdown-submenu>.dropdown-toggle::after {
+            float: right;
+            transform: rotate(90deg);
+            transition: transform 0.3s;
+        }
+
+        .dropdown-submenu.show>.dropdown-toggle::after {
+            transform: rotate(270deg);
+            /* arrow points up when open */
+        }
+
+        .dropdown-item {
+            position: relative;
+            padding: 12px 16px;
+            border-bottom: 1px solid #eee;
+            color: #3B0000;
+        }
+
+        .dropdown-item.active {
+            font-weight: bold;
+            border-left: 3px solid #581E1E;
+            background: rgba(88, 30, 30, 0.05);
+        }
+    }
+
+
+
+    /* Active state for nested items */
+    .dropdown-item.active {
+        background: linear-gradient(90deg, rgba(88, 30, 30, 0.1), transparent);
+        color: #581E1E !important;
+        border-left: 3px solid #581E1E;
+    }
+</style>
+
+
 @push('script')
+
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         // Handle navigation active states
@@ -712,6 +1084,60 @@
                     }
                 }, 100);
             });
+        });
+    });
+</script>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Handle submenu hover for desktop
+        const submenus = document.querySelectorAll('.dropdown-submenu');
+
+        submenus.forEach(function(submenu) {
+            let timeoutId;
+
+            submenu.addEventListener('mouseenter', function() {
+                clearTimeout(timeoutId);
+                const submenuDropdown = this.querySelector('.dropdown-submenu-menu');
+                if (submenuDropdown) {
+                    submenuDropdown.style.display = 'block';
+                }
+            });
+
+            submenu.addEventListener('mouseleave', function() {
+                const submenuDropdown = this.querySelector('.dropdown-submenu-menu');
+                timeoutId = setTimeout(function() {
+                    if (submenuDropdown) {
+                        submenuDropdown.style.display = 'none';
+                    }
+                }, 100);
+            });
+        });
+
+        // Handle mobile click for submenus
+        if (window.innerWidth <= 768) {
+            submenus.forEach(function(submenu) {
+                const link = submenu.querySelector('.dropdown-item');
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const submenuDropdown = submenu.querySelector('.dropdown-submenu-menu');
+                    if (submenuDropdown) {
+                        submenuDropdown.style.display =
+                            submenuDropdown.style.display === 'block' ? 'none' : 'block';
+                    }
+                });
+            });
+        }
+
+        // Set active state for current category
+        const currentUrl = window.location.href;
+        const dropdownItems = document.querySelectorAll('.dropdown-item');
+
+        dropdownItems.forEach(function(item) {
+            if (item.href === currentUrl) {
+                item.classList.add('active');
+            }
         });
     });
 </script>

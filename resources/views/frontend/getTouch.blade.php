@@ -55,7 +55,7 @@
 <section class="contact-hero" style="background-image: url('images/new/section_bg_img.jpg'); background-size: cover; background-position: center;">
     <div class="container">
         <div class="hero-content text-center">
-            <h1 class="hero-title">Get In Touch By Social Content</h1>
+            <h1 class="hero-title">Social Sparkle</h1>
 
             <!-- <p class="hero-subtitle" style="color: white;">We'd love to hear from you. Get in touch with our expert team.</p> -->
         </div>
@@ -75,8 +75,8 @@
 <br>
 <br>
 <br>
-<div class="modern-gallery-container">
-    <div class="row g-4">
+<div class="modern-gallery-container"  >
+    <div class="row g-4" style="justify-content: center;">
         @foreach($gets as $get)
         <div class="col-xl-3 col-lg-4 col-md-6 col-12">
             <div class="modern-gallery-card">
@@ -93,7 +93,7 @@
                                         <div class="icon-wrapper">
                                             <i class="fas fa-eye"></i>
                                         </div>
-                                        <span class="view-text">View Gallery</span>
+                                        <span class="view-text">View Post</span>
                                         <div class="decorative-dots">
                                             <span></span><span></span><span></span>
                                         </div>
@@ -122,6 +122,7 @@
 
     .modern-gallery-container {
         padding: 3rem 1rem;
+        
         max-width: 1400px;
         margin: 0 auto;
         /* background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); */
@@ -213,7 +214,7 @@
 
     .gallery-image {
         width: 100%;
-        height: 280px;
+        /* height: 280px; */
         object-fit: cover;
         transition: all 0.4s ease;
         border-radius: 10px;
@@ -404,9 +405,9 @@
             padding: 15px;
         }
 
-        .gallery-image {
+        /* .gallery-image {
             height: 240px;
-        }
+        } */
 
         .icon-wrapper {
             width: 50px;
@@ -423,9 +424,9 @@
     }
 
     @media (max-width: 576px) {
-        .gallery-image {
+        /* .gallery-image {
             height: 220px;
-        }
+        } */
 
         .dotted-frame {
             padding: 6px;

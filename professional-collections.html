@@ -1,0 +1,950 @@
+<!-- 🏆 Professional Collections - Luxury Design -->
+
+<div class="luxury-collections-wrapper">
+    <!-- Premium Background Elements -->
+    <div class="luxury-bg-elements">
+        <div class="luxury-pattern"></div>
+        <div class="floating-accent accent-1"></div>
+        <div class="floating-accent accent-2"></div>
+        <div class="floating-accent accent-3"></div>
+    </div>
+
+    <!-- Professional Header Section -->
+    <div class="luxury-header-section">
+        <div class="container">
+            <div class="header-content">
+                <!-- Decorative Line -->
+                <div class="luxury-divider">
+                    <div class="divider-line"></div>
+                    <div class="divider-diamond"></div>
+                    <div class="divider-line"></div>
+                </div>
+
+                <!-- Main Heading -->
+                <h1 class="luxury-heading">
+                    <span class="heading-primary">Our Curated</span>
+                    <span class="heading-accent">Collections</span>
+                </h1>
+
+                <!-- Subtitle -->
+                <p class="luxury-subtitle">
+                    Discover premium pieces crafted for discerning tastes
+                </p>
+
+                <!-- Professional Stats -->
+                <div class="luxury-stats">
+                    <div class="stat-card">
+                        <div class="stat-number">150+</div>
+                        <div class="stat-label">Premium Products</div>
+                    </div>
+                    <div class="stat-separator"></div>
+                    <div class="stat-card">
+                        <div class="stat-number">5★</div>
+                        <div class="stat-label">Customer Rating</div>
+                    </div>
+                    <div class="stat-separator"></div>
+                    <div class="stat-card">
+                        <div class="stat-number">24/7</div>
+                        <div class="stat-label">Premium Support</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Professional Collections Grid -->
+    <div class="luxury-collections-grid">
+        <div class="container">
+            <div class="row g-4">
+                @foreach($collection as $index => $coll)
+                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12" data-aos="fade-up" data-aos-delay="{{ $index * 150 }}">
+                    <a href="{{ route('frontend.product_detail', ['id' => $coll->id]) }}" class="luxury-card-link">
+                        <article class="luxury-collection-card">
+                            <!-- Card Header -->
+                            <div class="card-header-section">
+                                <div class="card-badge">{{ str_pad($loop->iteration, 2, '0', STR_PAD_LEFT) }}</div>
+                                <div class="premium-indicator">
+                                    <i class="bi bi-star-fill"></i>
+                                    <span>Premium</span>
+                                </div>
+                            </div>
+
+                            <!-- Image Section -->
+                            <div class="luxury-image-container">
+                                <div class="image-wrapper">
+                                    <img src="{{ asset('images/product/' . $coll->image) }}" 
+                                         alt="{{ $coll->name }}" 
+                                         class="luxury-image"
+                                         loading="lazy">
+                                    <div class="image-overlay"></div>
+                                </div>
+                                <div class="luxury-gradient-overlay"></div>
+                            </div>
+
+                            <!-- Content Section -->
+                            <div class="luxury-card-content">
+                                <div class="content-wrapper">
+                                    <h3 class="collection-title">{{ $coll->name }}</h3>
+                                    <p class="collection-description">Exclusive Premium Collection</p>
+                                    
+                                    <div class="luxury-cta">
+                                        <span class="cta-text">Explore Collection</span>
+                                        <div class="cta-icon">
+                                            <i class="bi bi-arrow-right"></i>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Professional Border Effect -->
+                                <div class="card-border-effect">
+                                    <div class="border-corner top-left"></div>
+                                    <div class="border-corner top-right"></div>
+                                    <div class="border-corner bottom-left"></div>
+                                    <div class="border-corner bottom-right"></div>
+                                </div>
+                            </div>
+
+                            <!-- Hover Enhancement -->
+                            <div class="luxury-hover-effect">
+                                <div class="hover-glow"></div>
+                                <div class="hover-ripple"></div>
+                            </div>
+                        </article>
+                    </a>
+                </div>
+                @endforeach
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Import Professional Fonts */
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=Crimson+Text:wght@400;600&display=swap');
+
+    /* === PROFESSIONAL COLOR VARIABLES === */
+    :root {
+        --luxury-primary: #3B0000;
+        --luxury-accent: #FFCC61;
+        --luxury-dark: #2a0000;
+        --luxury-light: #fff9e6;
+        --luxury-gold-dark: #e6b555;
+        --luxury-gold-light: #fff5cc;
+        --luxury-white: #ffffff;
+        --luxury-gray-light: #f8f9fa;
+        --luxury-gray-medium: #6c757d;
+        --luxury-gray-dark: #343a40;
+        
+        /* Professional Gradients */
+        --luxury-primary-gradient: linear-gradient(135deg, var(--luxury-primary) 0%, var(--luxury-dark) 100%);
+        --luxury-accent-gradient: linear-gradient(135deg, var(--luxury-accent) 0%, var(--luxury-gold-dark) 100%);
+        --luxury-mixed-gradient: linear-gradient(135deg, var(--luxury-primary) 0%, var(--luxury-accent) 100%);
+        
+        /* Professional Shadows */
+        --luxury-shadow-soft: 0 4px 20px rgba(59, 0, 0, 0.1);
+        --luxury-shadow-medium: 0 8px 30px rgba(59, 0, 0, 0.15);
+        --luxury-shadow-strong: 0 15px 50px rgba(59, 0, 0, 0.25);
+        --luxury-shadow-accent: 0 8px 25px rgba(255, 204, 97, 0.3);
+        
+        /* Professional Spacing */
+        --luxury-border-radius: 16px;
+        --luxury-border-radius-large: 24px;
+        --luxury-transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    /* === RESET & BASE === */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: 'Inter', sans-serif;
+        line-height: 1.6;
+        color: var(--luxury-gray-dark);
+        background-color: var(--luxury-gray-light);
+    }
+
+    /* === LUXURY WRAPPER === */
+    .luxury-collections-wrapper {
+        position: relative;
+        min-height: 100vh;
+        background: linear-gradient(135deg, var(--luxury-gray-light) 0%, #f1f3f4 50%, var(--luxury-light) 100%);
+        overflow-x: hidden;
+    }
+
+    /* === BACKGROUND ELEMENTS === */
+    .luxury-bg-elements {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 1;
+    }
+
+    .luxury-pattern {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: 
+            radial-gradient(circle at 25% 25%, rgba(59, 0, 0, 0.03) 0%, transparent 50%),
+            radial-gradient(circle at 75% 75%, rgba(255, 204, 97, 0.03) 0%, transparent 50%);
+        background-size: 400px 400px;
+        animation: patternMove 20s linear infinite;
+    }
+
+    @keyframes patternMove {
+        0% { background-position: 0% 0%; }
+        100% { background-position: 100% 100%; }
+    }
+
+    .floating-accent {
+        position: absolute;
+        border-radius: 50%;
+        background: var(--luxury-accent-gradient);
+        opacity: 0.1;
+        animation: luxuryFloat 8s ease-in-out infinite;
+    }
+
+    .accent-1 {
+        width: 120px;
+        height: 120px;
+        top: 15%;
+        left: 10%;
+        animation-delay: 0s;
+    }
+
+    .accent-2 {
+        width: 80px;
+        height: 80px;
+        top: 60%;
+        right: 15%;
+        animation-delay: -3s;
+    }
+
+    .accent-3 {
+        width: 100px;
+        height: 100px;
+        bottom: 20%;
+        left: 20%;
+        animation-delay: -6s;
+    }
+
+    @keyframes luxuryFloat {
+        0%, 100% { 
+            transform: translateY(0px) scale(1);
+            opacity: 0.1;
+        }
+        50% { 
+            transform: translateY(-30px) scale(1.1);
+            opacity: 0.15;
+        }
+    }
+
+    /* === PROFESSIONAL HEADER === */
+    .luxury-header-section {
+        position: relative;
+        z-index: 10;
+        padding: 5rem 0 3rem;
+        text-align: center;
+    }
+
+    .header-content {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    /* Luxury Divider */
+    .luxury-divider {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 2.5rem;
+        opacity: 0;
+        animation: luxuryFadeIn 1s ease 0.3s forwards;
+    }
+
+    .divider-line {
+        width: 80px;
+        height: 1px;
+        background: var(--luxury-accent-gradient);
+        position: relative;
+    }
+
+    .divider-line::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, var(--luxury-white), transparent);
+        animation: luxuryShimmer 3s ease-in-out infinite;
+    }
+
+    .divider-diamond {
+        width: 12px;
+        height: 12px;
+        background: var(--luxury-accent);
+        transform: rotate(45deg);
+        margin: 0 1.5rem;
+        box-shadow: 0 0 15px rgba(255, 204, 97, 0.5);
+        animation: luxuryPulse 2s ease-in-out infinite;
+    }
+
+    @keyframes luxuryShimmer {
+        0%, 100% { transform: translateX(-100%); }
+        50% { transform: translateX(100%); }
+    }
+
+    @keyframes luxuryPulse {
+        0%, 100% { 
+            transform: rotate(45deg) scale(1);
+            box-shadow: 0 0 15px rgba(255, 204, 97, 0.5);
+        }
+        50% { 
+            transform: rotate(45deg) scale(1.2);
+            box-shadow: 0 0 25px rgba(255, 204, 97, 0.8);
+        }
+    }
+
+    /* Professional Heading */
+    .luxury-heading {
+        font-family: 'Playfair Display', serif;
+        font-size: 3.5rem;
+        font-weight: 700;
+        line-height: 1.2;
+        margin-bottom: 1.5rem;
+        text-align: center;
+    }
+
+    .heading-primary {
+        display: block;
+        color: var(--luxury-primary);
+        opacity: 0;
+        transform: translateY(30px);
+        animation: luxurySlideUp 0.8s ease 0.6s forwards;
+    }
+
+    .heading-accent {
+        display: block;
+        background: var(--luxury-accent-gradient);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        position: relative;
+        opacity: 0;
+        transform: translateY(30px);
+        animation: luxurySlideUp 0.8s ease 0.9s forwards;
+    }
+
+    .heading-accent::after {
+        content: '';
+        position: absolute;
+        bottom: -8px;
+        left: 50%;
+        transform: translateX(-50%) scaleX(0);
+        width: 80%;
+        height: 3px;
+        background: var(--luxury-accent-gradient);
+        border-radius: 2px;
+        animation: luxuryUnderlineGrow 0.8s ease 1.5s forwards;
+    }
+
+    @keyframes luxurySlideUp {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes luxuryUnderlineGrow {
+        to { transform: translateX(-50%) scaleX(1); }
+    }
+
+    /* Professional Subtitle */
+    .luxury-subtitle {
+        font-family: 'Crimson Text', serif;
+        font-size: 1.25rem;
+        color: var(--luxury-gray-medium);
+        margin-bottom: 3rem;
+        opacity: 0;
+        animation: luxuryFadeIn 1s ease 1.2s forwards;
+    }
+
+    /* Professional Stats */
+    .luxury-stats {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 2rem;
+        margin-top: 2rem;
+        opacity: 0;
+        animation: luxuryFadeIn 1s ease 1.8s forwards;
+    }
+
+    .stat-card {
+        text-align: center;
+        padding: 1rem 1.5rem;
+        background: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(10px);
+        border-radius: var(--luxury-border-radius);
+        border: 1px solid rgba(255, 204, 97, 0.2);
+        transition: var(--luxury-transition);
+    }
+
+    .stat-card:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--luxury-shadow-accent);
+        background: var(--luxury-white);
+    }
+
+    .stat-number {
+        display: block;
+        font-family: 'Playfair Display', serif;
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: var(--luxury-primary);
+        margin-bottom: 0.25rem;
+    }
+
+    .stat-label {
+        font-size: 0.85rem;
+        color: var(--luxury-gray-medium);
+        font-weight: 500;
+    }
+
+    .stat-separator {
+        width: 1px;
+        height: 50px;
+        background: linear-gradient(to bottom, transparent, var(--luxury-accent), transparent);
+    }
+
+    /* === PROFESSIONAL COLLECTIONS GRID === */
+    .luxury-collections-grid {
+        position: relative;
+        z-index: 10;
+        padding: 2rem 0 5rem;
+    }
+
+    .luxury-card-link {
+        text-decoration: none;
+        display: block;
+    }
+
+    .luxury-collection-card {
+        position: relative;
+        height: 450px;
+        background: var(--luxury-white);
+        border-radius: var(--luxury-border-radius-large);
+        overflow: hidden;
+        box-shadow: var(--luxury-shadow-soft);
+        transition: var(--luxury-transition);
+        cursor: pointer;
+        border: 1px solid rgba(255, 204, 97, 0.1);
+    }
+
+    .luxury-collection-card:hover {
+        transform: translateY(-10px);
+        box-shadow: var(--luxury-shadow-strong);
+        border-color: var(--luxury-accent);
+    }
+
+    /* Card Header */
+    .card-header-section {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 5;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1.25rem;
+    }
+
+    .card-badge {
+        width: 35px;
+        height: 35px;
+        background: var(--luxury-primary);
+        color: var(--luxury-white);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.85rem;
+        font-weight: 600;
+        transition: var(--luxury-transition);
+    }
+
+    .luxury-collection-card:hover .card-badge {
+        background: var(--luxury-accent);
+        color: var(--luxury-primary);
+        transform: scale(1.1) rotate(360deg);
+    }
+
+    .premium-indicator {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 500;
+        color: var(--luxury-primary);
+        transition: var(--luxury-transition);
+    }
+
+    .premium-indicator i {
+        color: var(--luxury-accent);
+        font-size: 0.7rem;
+    }
+
+    .luxury-collection-card:hover .premium-indicator {
+        background: var(--luxury-accent);
+        color: var(--luxury-primary);
+    }
+
+    .luxury-collection-card:hover .premium-indicator i {
+        color: var(--luxury-primary);
+    }
+
+    /* Professional Image Container */
+    .luxury-image-container {
+        position: relative;
+        height: 60%;
+        overflow: hidden;
+    }
+
+    .image-wrapper {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+    }
+
+    .luxury-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.6s ease;
+        filter: brightness(0.95) contrast(1.05);
+    }
+
+    .luxury-collection-card:hover .luxury-image {
+        transform: scale(1.1);
+        filter: brightness(1) contrast(1.1);
+    }
+
+    .image-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(
+            180deg, 
+            rgba(59, 0, 0, 0.1) 0%, 
+            rgba(59, 0, 0, 0.3) 70%, 
+            rgba(59, 0, 0, 0.7) 100%
+        );
+        opacity: 0.8;
+        transition: opacity 0.4s ease;
+    }
+
+    .luxury-collection-card:hover .image-overlay {
+        opacity: 0.6;
+    }
+
+    .luxury-gradient-overlay {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 50%;
+        background: linear-gradient(
+            to top,
+            var(--luxury-white) 0%,
+            rgba(255, 255, 255, 0.9) 30%,
+            transparent 100%
+        );
+    }
+
+    /* Professional Content */
+    .luxury-card-content {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 40%;
+        padding: 2rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        background: var(--luxury-white);
+        transition: var(--luxury-transition);
+    }
+
+    .luxury-collection-card:hover .luxury-card-content {
+        transform: translateY(-5px);
+    }
+
+    .content-wrapper {
+        position: relative;
+        z-index: 2;
+    }
+
+    .collection-title {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: var(--luxury-primary);
+        margin-bottom: 0.75rem;
+        line-height: 1.3;
+        transition: var(--luxury-transition);
+    }
+
+    .luxury-collection-card:hover .collection-title {
+        color: var(--luxury-primary);
+        transform: translateX(5px);
+    }
+
+    .collection-description {
+        font-size: 0.9rem;
+        color: var(--luxury-gray-medium);
+        margin-bottom: 1.25rem;
+        font-weight: 400;
+    }
+
+    /* Professional CTA */
+    .luxury-cta {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        color: var(--luxury-accent);
+        font-weight: 600;
+        font-size: 0.95rem;
+        transition: var(--luxury-transition);
+    }
+
+    .cta-text {
+        position: relative;
+    }
+
+    .cta-text::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: var(--luxury-accent);
+        transition: width 0.3s ease;
+    }
+
+    .luxury-collection-card:hover .cta-text::after {
+        width: 100%;
+    }
+
+    .cta-icon {
+        width: 28px;
+        height: 28px;
+        background: var(--luxury-accent);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--luxury-primary);
+        font-size: 0.8rem;
+        transition: var(--luxury-transition);
+    }
+
+    .luxury-collection-card:hover .luxury-cta {
+        transform: translateX(8px);
+    }
+
+    .luxury-collection-card:hover .cta-icon {
+        background: var(--luxury-primary);
+        color: var(--luxury-accent);
+        transform: rotate(45deg) scale(1.1);
+    }
+
+    /* Professional Border Effects */
+    .card-border-effect {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        pointer-events: none;
+        opacity: 0;
+        transition: opacity 0.4s ease;
+    }
+
+    .luxury-collection-card:hover .card-border-effect {
+        opacity: 1;
+    }
+
+    .border-corner {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        border: 2px solid var(--luxury-accent);
+        transition: all 0.4s ease;
+    }
+
+    .border-corner.top-left {
+        top: 15px;
+        left: 15px;
+        border-right: none;
+        border-bottom: none;
+    }
+
+    .border-corner.top-right {
+        top: 15px;
+        right: 15px;
+        border-left: none;
+        border-bottom: none;
+    }
+
+    .border-corner.bottom-left {
+        bottom: 15px;
+        left: 15px;
+        border-right: none;
+        border-top: none;
+    }
+
+    .border-corner.bottom-right {
+        bottom: 15px;
+        right: 15px;
+        border-left: none;
+        border-top: none;
+    }
+
+    .luxury-collection-card:hover .border-corner {
+        transform: scale(1.2);
+    }
+
+    /* Luxury Hover Effects */
+    .luxury-hover-effect {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        pointer-events: none;
+        opacity: 0;
+        transition: opacity 0.6s ease;
+    }
+
+    .luxury-collection-card:hover .luxury-hover-effect {
+        opacity: 1;
+    }
+
+    .hover-glow {
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(
+            circle,
+            rgba(255, 204, 97, 0.1) 0%,
+            transparent 70%
+        );
+        animation: luxuryGlow 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes luxuryGlow {
+        0% { transform: scale(0.8); opacity: 0.5; }
+        100% { transform: scale(1.2); opacity: 0.8; }
+    }
+
+    .hover-ripple {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        background: radial-gradient(
+            circle,
+            rgba(255, 204, 97, 0.2) 0%,
+            transparent 70%
+        );
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        transition: all 0.6s ease;
+    }
+
+    .luxury-collection-card:hover .hover-ripple {
+        width: 400px;
+        height: 400px;
+    }
+
+    /* === PROFESSIONAL RESPONSIVE DESIGN === */
+    @media (max-width: 1400px) {
+        .luxury-heading { font-size: 3.2rem; }
+        .luxury-collection-card { height: 420px; }
+    }
+
+    @media (max-width: 1200px) {
+        .luxury-heading { font-size: 2.8rem; }
+        .luxury-collection-card { height: 400px; }
+        .luxury-stats { gap: 1.5rem; }
+    }
+
+    @media (max-width: 992px) {
+        .luxury-heading { font-size: 2.5rem; }
+        .luxury-collection-card { height: 380px; }
+        .luxury-header-section { padding: 4rem 0 2rem; }
+        .floating-accent { transform: scale(0.8); }
+    }
+
+    @media (max-width: 768px) {
+        .luxury-heading { font-size: 2.2rem; }
+        .luxury-collection-card { 
+            height: 350px;
+            margin-bottom: 1.5rem;
+        }
+        .luxury-stats {
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .stat-separator { display: none; }
+        .luxury-header-section { padding: 3rem 0 1.5rem; }
+        .luxury-card-content { padding: 1.5rem; }
+        .collection-title { font-size: 1.3rem; }
+        .floating-accent { transform: scale(0.6); }
+    }
+
+    @media (max-width: 576px) {
+        .luxury-heading { font-size: 1.9rem; }
+        .luxury-collection-card { height: 320px; }
+        .luxury-card-content { padding: 1.25rem; }
+        .collection-title { font-size: 1.2rem; }
+        .luxury-stats { padding: 0 1rem; }
+        .stat-card { padding: 0.75rem 1rem; }
+        .divider-line { width: 60px; }
+    }
+
+    /* === ACCESSIBILITY & ANIMATIONS === */
+    @keyframes luxuryFadeIn {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        * {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+        }
+    }
+
+    /* === DARK MODE SUPPORT === */
+    @media (prefers-color-scheme: dark) {
+        .luxury-collections-wrapper {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d1810 50%, #1f1611 100%);
+        }
+        
+        .luxury-collection-card,
+        .luxury-card-content {
+            background: #2a2a2a;
+            color: #f0f0f0;
+        }
+        
+        .collection-title {
+            color: var(--luxury-accent);
+        }
+        
+        .stat-card {
+            background: rgba(42, 42, 42, 0.8);
+            border-color: rgba(255, 204, 97, 0.3);
+        }
+    }
+
+    /* === PRINT STYLES === */
+    @media print {
+        .luxury-collections-wrapper {
+            background: white !important;
+        }
+        
+        .luxury-collection-card {
+            box-shadow: none !important;
+            border: 1px solid #ccc !important;
+        }
+        
+        .floating-accent,
+        .luxury-bg-elements {
+            display: none !important;
+        }
+    }
+</style>
+
+<!-- Professional Libraries -->
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+<script>
+    // Initialize Professional Animations
+    document.addEventListener('DOMContentLoaded', function() {
+        // Initialize AOS with professional settings
+        AOS.init({
+            duration: 1000,
+            easing: 'ease-out-cubic',
+            once: true,
+            offset: 120,
+            delay: 100
+        });
+
+        // Professional hover interactions
+        const cards = document.querySelectorAll('.luxury-collection-card');
+        
+        cards.forEach((card, index) => {
+            // Add professional stagger delay
+            card.style.animationDelay = `${index * 0.1}s`;
+            
+            // Enhanced hover effects
+            card.addEventListener('mouseenter', function() {
+                this.style.setProperty('--hover-x', '50%');
+                this.style.setProperty('--hover-y', '50%');
+            });
+            
+            card.addEventListener('mousemove', function(e) {
+                const rect = this.getBoundingClientRect();
+                const x = ((e.clientX - rect.left) / rect.width) * 100;
+                const y = ((e.clientY - rect.top) / rect.height) * 100;
+                
+                this.style.setProperty('--hover-x', `${x}%`);
+                this.style.setProperty('--hover-y', `${y}%`);
+            });
+        });
+
+        // Professional loading enhancement
+        setTimeout(() => {
+            document.body.classList.add('luxury-loaded');
+        }, 500);
+    });
+
+    // Professional scroll enhancements
+    window.addEventListener('scroll', function() {
+        const scrolled = window.pageYOffset;
+        const parallax = document.querySelector('.luxury-pattern');
+        
+        if (parallax) {
+            const speed = scrolled * 0.5;
+            parallax.style.transform = `translateY(${speed}px)`;
+        }
+    });
+</script>
